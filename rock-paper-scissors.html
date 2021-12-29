@@ -9,21 +9,24 @@
   <script>
     const choices = ['rock', 'paper', 'scissors'];
     const number = choices.length;
-    const randomNum = Math.floor(Math.random() * number);
 
     function computerPlay(){
+          const randomNum = Math.floor(Math.random() * number);
       const computerChoice = choices[randomNum];
       return computerChoice;
     }    
-    
     function playerPlay(){
+          const randomNum = Math.floor(Math.random() * number);
       const playerChoice = choices[randomNum];
       return playerChoice;
     }
-    const computerSelection = computerPlay();
-    const playerSelection = playerPlay();
 
+    let computerScore = 0;
+    let playerScore = 0;
+    
     function playRound(){
+      let computerSelection= computerPlay();
+      let playerSelection= playerPlay();
        if ((computerSelection == "rock") && (playerSelection == "scissors")){
         return ("Computer wins!");
       }
@@ -46,7 +49,28 @@
         return ("It's a tie!");
       }
     }
- 
+
+    function game(){
+      for (i=0; i<=4; i++){
+        let result = playRound();
+        console.log(result);
+        if (result == ("Computer wins!")){
+          computerScore++;
+        }
+        else if (result == "Player wins!"){
+          playerScore++;
+        }
+      }
+      if (playerScore > computerScore){
+        console.log('You won!');
+      }
+      else if (computerScore > playerScore){
+        console.log('Sorry, you lost');
+      }
+      else{
+        console.log("Game is tied")
+      }
+    }
   </script>
 </head>
 <body>
